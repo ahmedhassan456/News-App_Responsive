@@ -28,9 +28,9 @@ class NewsApp extends StatelessWidget {
                   onPressed: (){
                     NewsCubit.get(context).changeMode();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.sunny,
-                    color: NewsCubit.get(context).isDark? Colors.white : Colors.black,
+                    color: Colors.white,
                   ),
               ),
             ],

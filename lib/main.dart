@@ -30,22 +30,24 @@ class MyApp extends StatelessWidget{
               scaffoldBackgroundColor: Colors.white,
               appBarTheme: const AppBarTheme(
                 titleTextStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),
                 iconTheme: IconThemeData(
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: Colors.white,
-                  statusBarIconBrightness: Brightness.dark,
+                  statusBarColor: Colors.orange,
+                  statusBarIconBrightness: Brightness.light,
                 ),
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.orange,
                 elevation: 0.0,
               ),
               bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-                selectedItemColor: Colors.orange,
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.grey,
+                backgroundColor: Colors.orange,
                 type: BottomNavigationBarType.fixed,
               ),
               floatingActionButtonTheme: const FloatingActionButtonThemeData(
@@ -63,6 +65,10 @@ class MyApp extends StatelessWidget{
                   color: Colors.white,
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
+                ),
+                systemOverlayStyle: SystemUiOverlayStyle(
+                  statusBarColor: ThemeData.dark().primaryColor,
+                  statusBarIconBrightness: Brightness.light,
                 ),
               ),
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
