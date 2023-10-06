@@ -15,8 +15,9 @@ class NewsBusiness extends StatelessWidget {
   Widget build(BuildContext context) {
     var list = NewsCubit.get(context).business;
     return BlocConsumer<NewsCubit, NewsStates>(
+      listener: (context, state) => {},
       builder: (context, state) => ConditionalBuilder(
-        condition: state is! NewsGetBusinessLoadingState,
+        condition: state is! NewsGetBusinessSuccessState,
         builder: (context) => ListView.separated(
           physics: const BouncingScrollPhysics(),
           itemCount: list.length,
@@ -33,7 +34,6 @@ class NewsBusiness extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         },
       ),
-      listener: (context, state) => {},
     );
   }
 }

@@ -12,62 +12,58 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => NewsCubit()..getBusinessData()..getSportsData()..getScienceData(),
-      child: BlocConsumer<NewsCubit, NewsStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          var cubit = NewsCubit.get(context);
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text(
+    return BlocConsumer<NewsCubit, NewsStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var cubit = NewsCubit.get(context);
+        return Scaffold(
+          appBar: AppBar(
+            title: const Center(
+              child: Text(
                 'News App',
               ),
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.search_rounded,
-                  ),
-                )
-              ],
             ),
-            bottomNavigationBar: BottomNavigationBar(
-              items: const [
-                BottomNavigationBarItem(
+            actions: [
+              IconButton(
+                  onPressed: (){
+                    NewsCubit.get(context).changeMode();
+                  },
                   icon: Icon(
-                    Icons.business_center_sharp,
+                    Icons.sunny,
+                    color: NewsCubit.get(context).isDark? Colors.white : Colors.black,
                   ),
-                  label: 'Business',
+              ),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.business_center_sharp,
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.sports_baseball,
-                  ),
-                  label: 'Sports',
+                label: 'Business',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.sports_baseball,
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.science,
-                  ),
-                  label: 'Science',
+                label: 'Sports',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.science,
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.settings,
-                  ),
-                  label: 'Settings',
-                ),
-              ],
-              currentIndex: cubit.currentIndex,
-              onTap: (index) {
-                cubit.changeBottomNav(index);
-              },
-            ),
-            body: cubit.screens[cubit.currentIndex],
-          );
-        },
-      ),
+                label: 'Science',
+              ),
+            ],
+            currentIndex: cubit.currentIndex,
+            onTap: (index) {
+              cubit.changeBottomNav(index);
+            },
+          ),
+          body: cubit.screens[cubit.currentIndex],
+        );
+      },
     );
   }
 }

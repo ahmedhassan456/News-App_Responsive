@@ -1,14 +1,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/cubit/cubit.dart';
+import 'package:news_app/layout/NewsApp.dart';
 import 'package:news_app/modules/WebView.dart';
 
 Widget buildArticleItem(article, context) => InkWell(
-  onTap:(){ Navigator.push(context,
-    MaterialPageRoute(
-    builder: (context) => WebViewScreen(url: article['url']),
-    ),
-  );},
+  onTap:(){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewScreen(article['url'])));
+    },
   child: Padding(
     padding: const EdgeInsets.all(20.0),
     child: Row(
@@ -37,9 +37,10 @@ Widget buildArticleItem(article, context) => InkWell(
                 Expanded(
                   child: Text(
                     '${article['title']}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
+                      color: NewsCubit.get(context).isDark? Colors.white : Colors.black,
                     ),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,

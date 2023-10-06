@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/states.dart';
-import 'package:news_app/modules/SettingsScreen.dart';
 
 import '../API/dioHelper.dart';
 import '../modules/businessScreen.dart';
@@ -20,7 +19,6 @@ class NewsCubit extends Cubit<NewsStates>{
     const NewsBusiness(),
     const NewsSports(),
     const NewsScience(),
-    const NewsSettings(),
   ];
 
   void changeBottomNav(index){
@@ -84,4 +82,12 @@ class NewsCubit extends Cubit<NewsStates>{
       emit(NewsGetScienceErrorState(error.toString()));
     });
   }
+
+
+  bool isDark = false;
+  void changeMode(){
+    isDark = !isDark;
+    emit(NewsChangeModeState());
+  }
+
 }

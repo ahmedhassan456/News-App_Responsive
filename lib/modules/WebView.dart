@@ -3,11 +3,11 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 
 class WebViewScreen extends StatelessWidget {
-  final String url;
+  String? url;
 
-  const WebViewScreen(
-  {super.key, required this.url,}
-);
+  WebViewScreen(String Url,{super.key,}){
+    url = Url;
+  }
 
 
   @override
